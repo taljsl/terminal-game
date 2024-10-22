@@ -74,20 +74,22 @@ const assignPeons = () => {
       i--;
       continue;
     }
-    if (playerCastle.peons[i].job === "Attack") { //updated the code so damage and healing only occcurs in npc job matches the action
+    if (playerCastle.peons[i].job === "Attack") {
+      //updated the code so damage and healing only occcurs in npc job matches the action
       damageNPC();
     } else if (playerCastle.peons[i].job === "Fortify") {
       healPlayer();
     }
-  } if (npcHP <= 0) {
-  console.log(`You did it General ${username}, you have won!`);
-  gameStatus = false; //ends the game if applicable
-} else {
-  console.log(`You presently have ${playerHP} HP and your foe has ${npcHP}`);
-  blankLine();
-  playerTurn = false;
-}
-}
+  }
+  if (npcHP <= 0) {
+    console.log(`You did it General ${username}, you have won!`);
+    gameStatus = false; //ends the game if applicable
+  } else {
+    console.log(`You presently have ${playerHP} HP and your foe has ${npcHP}`);
+    blankLine();
+    playerTurn = false;
+  }
+};
 //Game introduction and premise
 console.log(`Welcome to Castle Battle`);
 blankLine();
@@ -132,3 +134,4 @@ while (playerTurn === true && gameStatus === true) {
     }
   }
 }
+// This is me leaving a comment
