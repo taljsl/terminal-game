@@ -69,9 +69,13 @@ const assignPeons = () => {
       playerCastle.peons[i].job = "Attack";
       damageNPC();
     }
-    if (assignRole === "2") {
+    else if (assignRole === "2") {
       playerCastle.peons[i].job = "Fortify";
       healPlayer();
+    } else {
+      console.log(`Invalid Entry please input either "1" or "2". `);
+      i--
+      continue
     }
   }
   if (npcHP <= 0) {
