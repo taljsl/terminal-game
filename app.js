@@ -68,14 +68,13 @@ const assignPeons = () => {
     if (assignRole === "1") {
       playerCastle.peons[i].job = "Attack";
       damageNPC();
-    }
-    else if (assignRole === "2") {
+    } else if (assignRole === "2") {
       playerCastle.peons[i].job = "Fortify";
       healPlayer();
     } else {
-      console.log(`Invalid Entry please input either "1" or "2". `);
-      i--
-      continue
+      console.log(`Invalid Entry please input either "1" or "2". `);// how to handle invalid inputs given by chatgpt
+      i--;
+      continue;
     }
   }
   if (npcHP <= 0) {
@@ -112,9 +111,12 @@ while (playerTurn === true && gameStatus === true) {
     createPeon();
     blankLine();
   }
-  if (playerAction === "2") {
+  else if (playerAction === "2") {
     assignPeons();
     blankLine();
+  } else { console.log(`Invalid Entry please input either "1" or "2". `) // how to handle invalid inputs given by chatgpt
+    continue
+    
   }
   // We define the npc turn below
   while (playerTurn === false && gameStatus === true) {
