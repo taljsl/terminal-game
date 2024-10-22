@@ -5,39 +5,38 @@ const getRandomNumber = (min, max) => {
   min = Math.ceil(min); // Round up the minimum value
   max = Math.floor(max); //Round Down the maximum Value
   return Math.floor(Math.random() * (max - min + 1)) + min; //(chatgpt fixed code so that 0,1 would work as a range)
+};
+//player and npc HP Totals
+let playerHP = 10;
+let npcHP = 10;
 
-  //player and npc HP Totals
-  let playerHP = 10;
-  let npcHP = 10;
+//player castle and peons
+const playerCastle = {
+  peons: [],
+};
 
-  //player castle and peons
-  const playerCastle = {
-    peons: [],
-  };
+//peon count
+let count = 0;
 
-  //peon count
-  let count = 0;
-
-  //NPC Actions
-  const damagePlayer = () => {
-    let npcAttack = getRandomNumber(1, 5);
-    playerHP = playerHP - npcAttack;
-    console.log(
-      `Your foe attacks your base for ${npcAttack} damage. You have ${playerHP} remaining.`
-    );
-    if (playerHP <= 0) {
-      console.log(`The Enemy General has bested you in battle. Game Over! :(`);
-      gameStatus = false;
-    } else playerTurn = true;
-  };
-  const healNPC = () => {
-    let amtHealed = getRandomNumber(1, 5);
-    npcHP = npcHP + amtHealed;
-    console.log(
-      `The enemy General has built fortifications. They have gained ${amtHealed} HP and they now have ${npcHP} HP`
-    );
-    playerTurn = true;
-  };
+//NPC Actions
+const damagePlayer = () => {
+  let npcAttack = getRandomNumber(1, 5);
+  playerHP = playerHP - npcAttack;
+  console.log(
+    `Your foe attacks your base for ${npcAttack} damage. You have ${playerHP} HP remaining.`
+  );
+  if (playerHP <= 0) {
+    console.log(`The Enemy General has bested you in battle. Game Over! :(`);
+    gameStatus = false;
+  } else playerTurn = true;
+};
+const healNPC = () => {
+  let amtHealed = getRandomNumber(1, 5);
+  npcHP = npcHP + amtHealed;
+  console.log(
+    `The enemy General has built fortifications. They have gained ${amtHealed} HP and they now have ${npcHP} HP`
+  );
+  playerTurn = true;
 };
 
 //the below is player actions
@@ -46,7 +45,7 @@ const damageNPC = () => npcHP--;
 
 //Create a peon for the player
 const createPeon = () => {
-  const thisPeon = prompt(`What would you like to name peon # ${count + 1}?`);
+  const thisPeon = prompt(`What would you like to name peon # ${count + 1}?: `);
   blankLine();
   console.log(`Your peon is ${thisPeon} his current job is Nothing`);
   blankLine();
